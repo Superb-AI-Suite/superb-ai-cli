@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-superb-ai-label = "==0.21.1"
-superb-ai-curate = "==1.2.1"
+superb-ai-label = "*"
+superb-ai-curate = "*"
 setuptools = "*"
 click = "*"
+configparser = "*"
 
 [dev-packages]
 

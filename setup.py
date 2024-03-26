@@ -40,6 +40,7 @@ setup(
     long_description_content_type="text/markdown",
     install_requires=[
         "click",
+        "configparser",
     ],
     zip_safe=False,
     dependency_links=[],
