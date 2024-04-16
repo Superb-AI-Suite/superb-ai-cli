@@ -41,6 +41,7 @@ setup(
     install_requires=[
         "click",
         "configparser",
+        "requests"
     ],
     zip_safe=False,
     dependency_links=[],

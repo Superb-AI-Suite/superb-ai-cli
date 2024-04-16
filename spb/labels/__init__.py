@@ -1,6 +1,8 @@
 import click
 
 from .describes import describe
+from .downloads import download
+from .uploads import upload
 
 
 @click.group()
@@ -10,16 +12,8 @@ def label():
 
 
 label.add_command(describe)
-
-
-@label.group()
-def download():
-    pass
-
-
-@label.group()
-def upload():
-    pass
+label.add_command(download)
+label.add_command(upload)
 
 
 __all__ = (
