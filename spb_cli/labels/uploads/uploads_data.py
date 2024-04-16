@@ -1,10 +1,10 @@
 import click
 
-from spb.labels.base_service import BaseService
-from spb.labels.exceptions import (
+from spb_cli.labels.base_service import BaseService
+from spb_cli.labels.exceptions import (
     NotSupportedProjectException
 )
-from spb.labels.utils import (
+from spb_cli.labels.utils import (
     recursive_glob_image_files,
 )
 
@@ -53,10 +53,10 @@ class UploadDataService(BaseService):
             ):
                 return
 
-        asset_images = []
-        for key, file_path in imgs_path.items():
-            asset_images.append({
-                'file': file_path,
-                "data_key": key,
-                "dataset": 
-            })
+        # asset_images = []
+        # for key, file_path in imgs_path.items():
+        #     asset_images.append({
+        #         'file': file_path,
+        #         "data_key": key,
+        #         "dataset": 
+        #     })

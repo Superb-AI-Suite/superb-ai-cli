@@ -7,6 +7,7 @@ from .projects import ProjectService
 
 @click.group()
 def describe():
+    """Describe your resources in Superb Platform"""
     pass
 
 

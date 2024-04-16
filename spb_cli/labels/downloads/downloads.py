@@ -5,12 +5,12 @@ from multiprocessing import Pool
 from functools import partial
 from pathlib import Path
 
-from spb.labels.base_service import BaseService
-from spb.labels.exceptions import (
+from spb_cli.labels.base_service import BaseService
+from spb_cli.labels.exceptions import (
     NotSupportedProjectException,
     DescribeLabelException,
 )
-from spb.labels.utils import (
+from spb_cli.labels.utils import (
     divide_list,
     erase_line,
     random_sleep,

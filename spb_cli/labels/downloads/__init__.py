@@ -33,7 +33,7 @@ def download(
     is_forced,
     num_process,
 ):
-    """Download all data and labels of your project in Suite """
+    """Download all data and labels of your project in Superb Platform """
     if num_process < 1:
         print("[ERROR] num_process must be more than 0.")
         return

@@ -5,7 +5,7 @@ from .uploads_data import UploadDataService
 
 @click.group()
 def upload():
-    """Upload your data to Suite"""
+    """Upload your data to Superb Platform"""
     pass
 
 
@@ -16,7 +16,7 @@ def upload():
 @click.option('-np', '--num_process', 'num_process', type=int, required=False, default=2, help='Number of processors for executing commands (default=2)')
 @click.option('-y', '--yes', 'is_forced', required=False, default=False, help='Say YES to all prompts', is_flag=True)
 def dataset(name, project_name, directory_path, num_process, is_forced):
-    """Upload data to your Suite project"""
+    """Upload data to your Superb Platform project"""
     service = UploadDataService()
     service.upload_data(
         project_name=project_name,
@@ -33,5 +33,5 @@ def dataset(name, project_name, directory_path, num_process, is_forced):
 @click.option('-np', '--num_process', 'num_process', type=int, required=False, default=2, help='Number of processors for executing commands (default=2)')
 @click.option('-y', '--yes', 'is_forced', required=False, default=False, help='Say YES to all prompts', is_flag=True)
 def labels(project_name, directory_path, num_process, is_forced):
-    """Upload label json to your Suite project"""
+    """Upload label json to your Superb Platform project"""
     pass

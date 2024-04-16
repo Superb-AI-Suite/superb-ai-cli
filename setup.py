@@ -35,13 +35,14 @@ setup(
         "Programming Language :: Python :: 3.12",
     ],
     packages=find_packages(),
-    entry_points={"console_scripts": ["superb=spb.__main__:cli"]},
+    entry_points={"console_scripts": ["superb=spb_cli.__main__:cli"]},
     long_description=long_description(),
     long_description_content_type="text/markdown",
     install_requires=[
         "click",
         "configparser",
-        "requests"
+        "requests",
+        "superb-ai-label"
     ],
     zip_safe=False,
     dependency_links=[],

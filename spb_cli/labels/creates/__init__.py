@@ -3,7 +3,7 @@ import click
 
 @click.group()
 def create():
-    """Create your data to Suite"""
+    """Create your data to Superb Platform"""
     pass
 
 

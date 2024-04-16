@@ -1,8 +1,8 @@
 import click
 import math
 
-from spb.labels.base_service import BaseService
-from spb.labels.utils import (
+from spb_cli.labels.base_service import BaseService
+from spb_cli.labels.utils import (
     print_table
 )
 

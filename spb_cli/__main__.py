@@ -5,7 +5,11 @@ import os
 import click
 import configparser
 
-from spb.labels import label
+from spb_cli.labels import (
+    describe,
+    download,
+    upload,
+)
 
 
 def load_config():
@@ -52,7 +56,7 @@ def configure(team_name, access_key, list_flag):
         return
 
     if team_name is None:
-        team_name = click.prompt('Suite Team Name', type=str)
+        team_name = click.prompt('Superb Platform Team Name', type=str)
     if access_key is None:
         access_key = click.prompt('Access Key', type=str)
 
@@ -76,7 +80,9 @@ def configure(team_name, access_key, list_flag):
     )
 
 
-cli.add_command(label)
+cli.add_command(describe)
+cli.add_command(download)
+cli.add_command(upload)
 
 
 if __name__ == "__main__":
