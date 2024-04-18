@@ -1,6 +1,7 @@
 import click
 
-from .uploads_data import UploadDataService
+from .upload_data import UploadDataService
+from .upload_labels import UploadLabelService
 
 
 @click.group()
@@ -34,4 +35,10 @@ def dataset(name, project_name, directory_path, num_process, is_forced):
 @click.option('-y', '--yes', 'is_forced', required=False, default=False, help='Say YES to all prompts', is_flag=True)
 def labels(project_name, directory_path, num_process, is_forced):
     """Upload label json to your Superb Platform project"""
-    pass
+    service = UploadLabelService()
+    service.upload_label(
+        project_name=project_name,
+        directory_path=directory_path,
+        num_process=num_process,
+        is_forced=is_forced,
+    )

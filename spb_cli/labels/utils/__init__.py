@@ -129,7 +129,7 @@ def recursive_glob_video_paths(input_path):
             image_file_list = select_image_files(files)
             if len(image_file_list) != 0:
                 key = extract_file_key(input_path, dirpath)
-                video_paths[key] = {'path': dirpath, 'file_names': natsorted(image_file_list)}
+                video_paths[key] = {'path': dirpath, 'file_names': image_file_list}
     return video_paths
 
 

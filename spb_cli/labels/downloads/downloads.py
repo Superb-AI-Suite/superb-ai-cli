@@ -194,10 +194,12 @@ class DownloadService(BaseService):
                         indent=4
                     )
                 )
-
+                image_root_path = os.path.join(
+                    directory_path, handler.get_dataset_name()
+                )
                 # Download image
                 handler.download_image(
-                    download_to=Path(path).parent
+                    download_to=Path(image_root_path)
                 )
             except Exception as e:
                 item["retry_count"] += 1
@@ -238,8 +240,12 @@ class DownloadService(BaseService):
                         indent=4
                     )
                 )
+                video_root_path = os.path.join(
+                    directory_path, handler.get_dataset_name(), handler.get_key()
+                )
+                print(video_root_path)
                 handler.download_video(
-                    download_to=path,
+                    download_to=Path(video_root_path),
                 )
             except Exception as e:
                 item["retry_count"] += 1
@@ -254,3 +260,7 @@ class DownloadService(BaseService):
             "success": success_list,
             "failed": failed_list,
         }
+
+
+# superb download -d ./workspace/download_images -p SDKUploadTest -y -np 1
+# superb download -d ./workspace/download_videos -p VideoSDKUploadTest -y -np 4
