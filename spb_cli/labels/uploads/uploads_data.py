@@ -126,7 +126,7 @@ class UploadDataService(BaseService):
                 else:
                     is_success = False
                     failed_list.append(asset)
-            except Exception as e:
+            except:
                 is_success = False
                 failed_list.append(asset)
             message = f"[{asset['file']}] to [{asset['dataset']}] dataset"
@@ -139,7 +139,7 @@ class UploadDataService(BaseService):
             "success": success_list,
             "failed": failed_list,
         }
-    
+
     def upload_video_worker(
             self,
             params,
