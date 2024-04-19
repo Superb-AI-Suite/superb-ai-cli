@@ -34,12 +34,9 @@ def download(
     num_process,
 ):
     """Download all data and labels of your project in Superb Platform """
-    if num_process < 1:
-        print("[ERROR] num_process must be more than 0.")
+    if not (1 <= num_process and num_process <= 5):
+        print("[ERROR] Number of processors should be between 1 and 5.")
         return
-
-    if num_process > 10:
-        print("[ERROR] num_process must be less than 11.")
 
     if project_name is None:
         print("[ERROR] You have to pass project name for this command")

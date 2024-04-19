@@ -243,7 +243,6 @@ class DownloadService(BaseService):
                 video_root_path = os.path.join(
                     directory_path, handler.get_dataset_name(), handler.get_key()
                 )
-                print(video_root_path)
                 handler.download_video(
                     download_to=Path(video_root_path),
                 )
@@ -262,5 +261,5 @@ class DownloadService(BaseService):
         }
 
 
-# superb download -d ./workspace/download_images -p SDKUploadTest -y -np 1
+# superb download -d ./workspace/download_images -p SDKUploadTest -y -np 6
 # superb download -d ./workspace/download_videos -p VideoSDKUploadTest -y -np 4

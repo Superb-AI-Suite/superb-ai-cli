@@ -17,6 +17,10 @@ def upload():
 @click.option('-np', '--num_process', 'num_process', type=int, required=False, default=2, help='Number of processors for executing commands (default=2)')
 @click.option('-y', '--yes', 'is_forced', required=False, default=False, help='Say YES to all prompts', is_flag=True)
 def dataset(name, project_name, directory_path, num_process, is_forced):
+    if not (1 <= num_process and num_process <= 5):
+        print("[ERROR] Number of processors should be between 1 and 5.")
+        return
+
     """Upload data to your Superb Platform project"""
     service = UploadDataService()
     service.upload_data(
@@ -34,6 +38,14 @@ def dataset(name, project_name, directory_path, num_process, is_forced):
 @click.option('-np', '--num_process', 'num_process', type=int, required=False, default=2, help='Number of processors for executing commands (default=2)')
 @click.option('-y', '--yes', 'is_forced', required=False, default=False, help='Say YES to all prompts', is_flag=True)
 def labels(project_name, directory_path, num_process, is_forced):
+    if not (1 <= num_process and num_process <= 5):
+        print("[ERROR] Number of processors should be between 1 and 5.")
+        return
+    
+    if project_name is None:
+        print("[ERROR] You have to pass project name for this command")
+        return
+
     """Upload label json to your Superb Platform project"""
     service = UploadLabelService()
     service.upload_label(
