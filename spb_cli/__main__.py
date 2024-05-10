@@ -76,7 +76,7 @@ def configure(team_name, access_key, list_flag):
         config_parser.write(f)
 
     print(
-        f"Profile [{profile_name}] is counfigured with team name '{team_name}'."
+        f"Profile [{profile_name}] is configured with team name '{team_name}'."
     )
 
 
