@@ -26,7 +26,7 @@ def run_cli(command):
 @contextlib.contextmanager
 def run_in_workspace(workspace_name='workspace', project_name='0510-holiday'):
     assert not os.path.exists(workspace_name)
-    with run_cli(f'python -m superb init {workspace_name}') as spb:
+    with run_cli(f'python -m spb_cli init {workspace_name}') as spb:
         spb.expect('.*Project Name')
         spb.sendline(project_name)
         spb.expect(f"created.")
