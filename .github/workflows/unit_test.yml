@@ -30,8 +30,8 @@ jobs:
           python setup.py install
       - name: Version Check
         run: |
-          python -m spb_cli --version
-          python -m spb_cli describe projects
+          python -m superb --version
+          python -m superb describe projects
       - name: Unit test with pytest
         env:
           SPB_ACCESS_KEY: ${{ secrets.SPB_ACCESS_KEY }}
