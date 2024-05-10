@@ -24,7 +24,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: install packages
         run: |
-          pip3 install pytest
+          pip3 install pytest setuptools
       - name: SPB-CLI Install
         run: |
           python setup.py install
