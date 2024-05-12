@@ -80,7 +80,7 @@ my-project                         image       20       0     19     0     1    
 Press any button to continue to the next page (1/10). Otherwise press ‘Q’ to quit.
 ```
 
-## Uploading Dataset
+## Uploading Dataset & Labels
 
 You can upload data and create labels for your project with this command line interface.
 
