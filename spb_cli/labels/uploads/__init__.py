@@ -2,6 +2,7 @@ import click
 
 from .upload_data import UploadDataService
 from .upload_labels import UploadLabelService
+from spb_cli.labels.exceptions import SDKInitiationFailedException
 
 
 @click.group()
@@ -22,14 +23,19 @@ def dataset(name, project_name, directory_path, num_process, is_forced):
         return
 
     """Upload data to your Superb Platform project"""
-    service = UploadDataService()
-    service.upload_data(
-        project_name=project_name,
-        dataset=name,
-        directory_path=directory_path,
-        num_process=num_process,
-        is_forced=is_forced,
-    )
+    try:
+        service = UploadDataService()
+        service.upload_data(
+            project_name=project_name,
+            dataset=name,
+            directory_path=directory_path,
+            num_process=num_process,
+            is_forced=is_forced,
+        )
+    except SDKInitiationFailedException as e:
+        print('No credentials detected. Please use the configure CLI command to register your credentials.')
+    except Exception as e:
+        raise e
 
 
 @upload.command()
@@ -47,10 +53,15 @@ def labels(project_name, directory_path, num_process, is_forced):
         return
 
     """Upload label json to your Superb Platform project"""
-    service = UploadLabelService()
-    service.upload_label(
-        project_name=project_name,
-        directory_path=directory_path,
-        num_process=num_process,
-        is_forced=is_forced,
-    )
+    try:
+        service = UploadLabelService()
+        service.upload_label(
+            project_name=project_name,
+            directory_path=directory_path,
+            num_process=num_process,
+            is_forced=is_forced,
+        )
+    except SDKInitiationFailedException as e:
+        print('No credentials detected. Please use the configure CLI command to register your credentials.')
+    except Exception as e:
+        raise e

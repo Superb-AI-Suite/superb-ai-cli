@@ -3,7 +3,7 @@ import click
 from typing import Optional
 
 from .projects import ProjectService
-
+from spb_cli.labels.exceptions import SDKInitiationFailedException
 
 @click.group()
 def describe():
@@ -38,10 +38,15 @@ def projects(
     data_type: str,
     project_name: Optional[str],
 ):
-    service = ProjectService()
-    service.show_projects(
-        show_options, data_type, project_name,
-    )
+    try:
+        service = ProjectService()
+        service.show_projects(
+            show_options, data_type, project_name,
+        )
+    except SDKInitiationFailedException as e:
+        print('No credentials detected. Please use the configure CLI command to register your credentials.')
+    except Exception as e:
+        raise e
 
 
 __all__ = (

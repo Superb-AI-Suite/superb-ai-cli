@@ -1,6 +1,7 @@
 import click
 
 from .downloads import DownloadService
+from spb_cli.labels.exceptions import SDKInitiationFailedException
 
 
 @click.command()
@@ -42,13 +43,18 @@ def download(
         print("[ERROR] You have to pass project name for this command")
         return
 
-    service = DownloadService()
-    service.download(
-        project_name=project_name,
-        directory_path=directory_path,
-        is_forced=is_forced,
-        num_process=num_process,
-    )
+    try:
+        service = DownloadService()
+        service.download(
+            project_name=project_name,
+            directory_path=directory_path,
+            is_forced=is_forced,
+            num_process=num_process,
+        )
+    except SDKInitiationFailedException as e:
+        print('No credentials detected. Please use the configure CLI command to register your credentials.')
+    except Exception as e:
+        raise e
 
 
 __all__ = (
