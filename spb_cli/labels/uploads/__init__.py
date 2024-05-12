@@ -21,13 +21,17 @@ def dataset(name, project_name, directory_path, num_process, is_forced):
     if not (1 <= num_process and num_process <= 5):
         print("[ERROR] Number of processors should be between 1 and 5.")
         return
+    
+    if name is None or project_name is None:
+        print("[ERROR] You must provide both the dataset name and project name for this command")
+        return
 
     """Upload data to your Superb Platform project"""
     try:
         service = UploadDataService()
         service.upload_data(
-            project_name=project_name,
             dataset=name,
+            project_name=project_name,
             directory_path=directory_path,
             num_process=num_process,
             is_forced=is_forced,
@@ -49,7 +53,7 @@ def labels(project_name, directory_path, num_process, is_forced):
         return
     
     if project_name is None:
-        print("[ERROR] You have to pass project name for this command")
+        print("[ERROR] You must provide the project name for this command")
         return
 
     """Upload label json to your Superb Platform project"""

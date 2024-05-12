@@ -56,7 +56,7 @@ class UploadLabelService(BaseService):
             click.echo(f"2. Found {len(labels)} label files.")
         
         if not is_forced:
-            if click.confirm(
+            if not click.confirm(
                 f"Uploading {len(labels)} label files to the project. Proceed?",
             ):
                 return

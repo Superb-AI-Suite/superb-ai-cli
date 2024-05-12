@@ -40,7 +40,7 @@ def download(
         return
 
     if project_name is None:
-        print("[ERROR] You have to pass project name for this command")
+        print("[ERROR] You must provide the project name for this command")
         return
 
     try:

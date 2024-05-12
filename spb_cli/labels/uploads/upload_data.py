@@ -40,8 +40,8 @@ class UploadDataService(BaseService):
 
     def upload_data(
         self,
-        project_name: str,
         dataset: str,
+        project_name: str,
         directory_path: str = ".",
         num_process: int = 2,
         is_forced: bool = False,
