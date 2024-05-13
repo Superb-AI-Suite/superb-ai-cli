@@ -95,7 +95,7 @@ class UploadDataService(BaseService):
         click.echo("3. Start uploading data.")
 
         # Make worker processors
-        worker_processorrs = []        
+        worker_processors = []        
         for i in range(finall_num_process):
             processor_process = Process(target=worker, args=(
                 i,
@@ -104,9 +104,9 @@ class UploadDataService(BaseService):
                 fail_queue,
             ))
             processor_process.start()
-            worker_processorrs.append(processor_process)
+            worker_processors.append(processor_process)
         
-        for worker in worker_processorrs:
+        for worker in worker_processors:
             worker.join()
 
         click.echo(

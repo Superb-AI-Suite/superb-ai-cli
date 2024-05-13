@@ -65,18 +65,18 @@ class UploadLabelService(BaseService):
         success_queue = Queue()
         fail_queue = Queue()
 
-        # Enuqueue labels for processor
+        # Enqueue labels for processor
         for label in labels:
             labels_queue.put(label)
-        finall_num_process = min(num_process, len(labels))
-        for _ in range(finall_num_process):
+        final_num_process = min(num_process, len(labels))
+        for _ in range(final_num_process):
             labels_queue.put(None)
 
         click.echo(f"3. Start uploading {len(labels)} label files to the project.")
 
         # Make worker processors
         worker_processors = []
-        for i in range(finall_num_process):
+        for i in range(final_num_process):
             worker_process = Process(
                 target=self.upload_label_worker,
                 args=(i, directory_path, labels_queue, success_queue, fail_queue)
