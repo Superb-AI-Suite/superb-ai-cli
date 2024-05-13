@@ -104,8 +104,8 @@ Uploading 20 data to project <target_project_name>. Proceed? [y/N] y
 If you wish to upload the **label** files along with the dataset
 
 ```shell
-superb upload labels --project <target_project_name> --dir <target_directory>
-superb upload labels -p <target_project_name> -d <target_directory>
+$ superb upload labels --project <target_project_name> --dir <target_directory>
+$ superb upload labels -p <target_project_name> -d <target_directory>
 [INFO] Set project success: <target_project_name>
 1. Complete describing project.
 2. Found 20 label files.
