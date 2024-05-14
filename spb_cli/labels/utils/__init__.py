@@ -5,6 +5,7 @@ import time
 import random
 import requests
 import imghdr
+import json
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util import Retry
 from pathlib import Path
@@ -151,3 +152,19 @@ def extract_file_key(input_folder_path, file_path):
     key = os.path.abspath(file_path).replace(os.path.abspath(input_folder_path), "")
     key = "/".join(key.split(os.sep)[1:])
     return key
+
+
+def extract_error_log_from_handler(handler, error):
+    if handler is not None:
+        return json.dumps({
+            "project_id": str(handler._project.id),
+            "project_name": handler._project.name,
+            "label_id": str(handler.get_id()),
+            "dataset_name": handler.get_dataset_name(),
+            "key": handler.get_key(),
+            "error": str(error),
+        })
+    else:
+        return json.dumps({
+            "error": str(error),
+        })

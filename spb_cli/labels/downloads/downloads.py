@@ -16,6 +16,7 @@ from spb_cli.labels.utils import (
     random_sleep,
     requests_retry_session,
     file_writer,
+    extract_error_log_from_handler,
 )
 
 
@@ -131,16 +132,32 @@ class DownloadService(BaseService):
                     success_count += len(result["success"])
                     fail_count += len(result["failed"])
                     failed_handlers += result["failed"]
-
+                
                 click.echo(
                     f"    Downloading... : {success_count}/{label_count} labels has been downloaded. {fail_count} failed."
                 )
 
                 if cursor is None:
-                    click.echo(
-                        "3. Complete downloading all labels and data."
-                    )
                     break
+            
+            click.echo(
+                f"3. Complete downloading all labels and data."
+            )
+            # Print error logs
+            if len(failed_handlers) > 0:
+                log_path = os.path.join(directory_path, 'error.log')
+                logs = "\n".join([extract_error_log_from_handler(
+                    handler=item.get("handler", None),
+                    error=item.get("error", None),
+                ) for item in failed_handlers])
+                file_writer(
+                    path=log_path,
+                    mode="w",
+                    content=logs
+                )
+                click.echo(
+                    f"4. Failed to download {len(failed_handlers)} labels. Check {log_path}file."
+                )
 
     def _process_data_builder(
         self, handlers

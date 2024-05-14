@@ -10,9 +10,10 @@ from spb_cli.labels.exceptions import (
 )
 from spb_cli.labels.utils import (
     recursive_glob_label_files,
+    file_writer,
 )
 from spb_label.utils import (
-    SearchFilter
+    SearchFilter,
 )
 from spb_label.exceptions import (
     APIException
@@ -88,6 +89,31 @@ class UploadLabelService(BaseService):
             worker.join()
         
         click.echo("4. Complete uploading label files to the project.")
+
+        # Print error logs
+        error_labels = []
+        while not fail_queue.empty():
+            try:
+                error_label = fail_queue.get_nowait()
+                error_labels.append(error_label)
+            except fail_queue.Empty:
+                break
+
+        if len(error_labels) > 0:
+            log_path = os.path.join(directory_path, 'error.log')
+            logs = "\n".join([json.dumps({
+                "project_id": str(project.id),
+                "project_name": project.name,
+                "label_path": item,
+            }) for item in error_labels])
+            file_writer(
+                path=log_path,
+                mode="w",
+                content=logs
+            )
+            click.echo(
+                f"4. Failed to download {len(error_labels)} labels. Check {log_path} file."
+            )
 
     def upload_label_worker(
         self,
