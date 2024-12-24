@@ -1,6 +1,5 @@
 # `superb-ai-cli`
 
-[Build](https://github.com/Superb-AI-Suite/superb-ai-cli/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/pypi/v/superb-ai-cli)](https://pypi.org/project/superb-ai-cli/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
