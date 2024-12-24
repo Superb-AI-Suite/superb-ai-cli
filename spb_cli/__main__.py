@@ -13,7 +13,9 @@ from spb_cli.labels import (
 
 
 def load_config():
-    with io.open('./spb_cli/config.json', 'r', encoding='utf-8') as fid:
+    current_dir = os.path.dirname(__file__)
+    config_path = os.path.join(current_dir, 'config.json')
+    with io.open(config_path, 'r', encoding='utf-8') as fid:
         return json.load(fid)
 
 
