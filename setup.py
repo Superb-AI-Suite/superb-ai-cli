@@ -9,7 +9,7 @@ def long_description():
 
 
 def load_config():
-    with io.open('config.json', 'r', encoding='utf-8') as fid:
+    with io.open('./spb_cli/config.json', 'r', encoding='utf-8') as fid:
         return json.load(fid)
 
 
@@ -38,6 +38,10 @@ setup(
     entry_points={"console_scripts": ["superb=spb_cli.__main__:cli"]},
     long_description=long_description(),
     long_description_content_type="text/markdown",
+    include_package_data=True,
+    package_data={
+        "spb_cli": ["*.json"],
+    },
     install_requires=[
         "click",
         "requests",
