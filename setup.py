@@ -1,6 +1,7 @@
 import io
 import json
 from setuptools import setup, find_packages
+import importlib.resources
 
 
 def long_description():
